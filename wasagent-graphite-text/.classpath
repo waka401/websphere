@@ -2,5 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="/home/yann/lib/websphere-nd-7.0/com.ibm.ws.admin.client_7.0.0.jar"/>
+	<classpathentry kind="lib" path="/home/yann/lib/jetty-7.6.2/jetty-servlet-7.6.2.v20120308.jar"/>
+	<classpathentry kind="lib" path="/home/yann/lib/jetty-7.6.2/servlet-api-2.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
