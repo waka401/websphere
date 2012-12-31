@@ -34,10 +34,10 @@ import com.ibm.websphere.pmi.stat.WSStats;
 
 /**
  * An applicative proxy for a WebSphere instance.
- * Provides convenient methods to query stats
- * objects or mbeans. The proxy is initialized
- * thanks to the 'websphere.properties' file,
- * loaded from the plugin classpath.
+ * Provides convenient methods to query stats objects
+ * or mbeans. The proxy generic configuration is loaded
+ * from the 'websphere.properties' file, and the specific
+ * params are given through HTTP query parameters.
  * 
  * @author Yann Lambret
  *
@@ -52,7 +52,7 @@ public class WASClientProxy {
     private ObjectName serverMBean;    // WebSphere server MBean
     private ObjectName perfMBean;      // WebSphere Perf MBean
 
-    // Loads WebSphere properties file
+    // Loads WebSphere generic configuration
     static {
         try {
             stream = new FileInputStream("websphere.properties");
@@ -103,8 +103,8 @@ public class WASClientProxy {
     /**
      * Gets the whole PMI stats subtree for the given interface type.
      * 
-     * @param  name the NAME field of the given PMI stats interface
-     * @return a WSStats object for the given PMI stats interface type
+     * @param  name the NAME field of a specific PMI interface
+     * @return a WSStats object for a specific PMI interface
      * @throws Exception
      */
     public WSStats getStats(String name) throws Exception {

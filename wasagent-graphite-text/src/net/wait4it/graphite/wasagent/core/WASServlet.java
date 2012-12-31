@@ -30,8 +30,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Builds a HashMap with the request parameters
- * and call WASStatsManager process method
+ * Builds a HashMap with the HTTP query parameters,
+ * call WASStatsManager process method and display
+ * the result as plain old text
  * 
  * @author Yann Lambret
  *

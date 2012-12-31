@@ -30,10 +30,11 @@ import com.ibm.websphere.pmi.stat.WSWebAppStats;
 import net.wait4it.graphite.wasagent.core.WASClientProxy;
 
 /**
- * Gets servlet service method execution time.
+ * Gets servlet service method execution time (ms).
  * 
  * The metric name is of the form:
- *     app_name#web_module_name.servlet_name
+ * 
+ *   app_name#web_module_name.servlet_name
  * 
  * @author Yann Lambret
  *

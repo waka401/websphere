@@ -28,7 +28,13 @@ import com.ibm.websphere.pmi.stat.WSThreadPoolStats;
 import net.wait4it.graphite.wasagent.core.WASClientProxy;
 
 /**
- * Gets the stats WebSphere thread pools.
+ * Gets statistics for WebSphere thread pools.
+ * 
+ * The following metrics are available:
+ * 
+ *   - The thread pool current size
+ *   - The thread pool maximum size
+ *   - The active thread count
  * 
  * @author Yann Lambret
  *      

@@ -23,13 +23,20 @@ import net.wait4it.graphite.wasagent.core.WASClientProxy;
 
 /**
  * The common interface for all tests.
- * The 'run' method returns a list of Graphite metrics.
  * 
  * @author Yann Lambret
  *
  */
 public interface Test {
 
+    /**
+     * 
+     * @param  proxy an applicative proxy for
+     *         a WebSphere instance
+     * @param  params specific params for the test,
+     *         if needed. This string can be null
+     * @return a list of Graphite metrics
+     */
     List<String> run(WASClientProxy proxy, String params);
 
 }

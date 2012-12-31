@@ -29,6 +29,13 @@ import net.wait4it.graphite.wasagent.core.WASClientProxy;
  * Gets statistics for the the target
  * WAS instance JVM.
  * 
+ * The following metrics are available:
+ * 
+ *   - The JVM current heap size (MB)
+ *   - The JVM maximum heap size (MB)
+ *   - The current amount of memory used by the JVM (MB)
+ *   - The amount of CPU resources used by the JVM (%)
+ * 
  * @author Yann Lambret
  *
  */

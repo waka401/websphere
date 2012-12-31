@@ -30,6 +30,14 @@ import net.wait4it.graphite.wasagent.core.WASClientProxy;
 /**
  * Gets statistics for JDBC datasources.
  * 
+ * The following metrics are available:
+ * 
+ *   - The datasource current pool size
+ *   - The datasource maximum pool size
+ *   - The active connection count
+ *   - The number of threads waiting for
+ *     a connection from the pool
+ * 
  * @author Yann Lambret
  *
  */

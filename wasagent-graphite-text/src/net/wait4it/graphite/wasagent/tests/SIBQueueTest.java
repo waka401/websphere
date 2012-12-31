@@ -82,7 +82,6 @@ public class SIBQueueTest extends TestUtils implements Test {
 
     /**
      * 
-     * 
      * @param  identifier the name of the SIB queue
      * @return true if the given queue belongs to
      *         the EXCLUSIONS list, false otherwise

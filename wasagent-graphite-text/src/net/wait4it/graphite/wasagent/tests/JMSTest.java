@@ -31,7 +31,15 @@ import net.wait4it.graphite.wasagent.core.WASClientProxy;
 /**
  * Gets statistics for JMS connection factories.
  * 
- * @author Yann Lambret (yann.lambret@gmail.com)
+ * The following metrics are available:
+ * 
+ *   - The JMS connection factory current pool size
+ *   - The JMS connection factory maximum pool size
+ *   - The active connection count
+ *   - The number of threads waiting for an available
+ *     connection
+ * 
+ * @author Yann Lambret
  *
  */
 public class JMSTest extends TestUtils implements Test {

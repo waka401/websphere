@@ -26,11 +26,11 @@ import java.util.Map;
  */
 public class WASStatsManager {
 
-    // Plugin output
+    // Plugin overall output
     private StringBuilder output = new StringBuilder();
 
-    // Single test buffer
-    private List<String> data = null;
+    // Single test output (for a specific PMI interface)
+    private List<String> metrics = null;
 
     // Optional strings to build the metric scheme
     private String prefix = "";
@@ -49,7 +49,7 @@ public class WASStatsManager {
             WASClientProxy proxy = new WASClientProxy(params);
             proxy.init();
 
-            // We get the required information to build the Graphite scheme
+            // We get the information we need to build the Graphite scheme
             String serverName = proxy.getServerName(); // WAS instance name
             String hostName = params.get("hostname");  // Target host name
 
@@ -62,19 +62,16 @@ public class WASStatsManager {
             long now = System.currentTimeMillis() / 1000L;
 
             for (Option option : Option.values()) {
-                if (params.containsKey(option.getName()))
-                    data = option.getTest().run(proxy, params.get(option.getName()));
-                for (String s : data) {
+                if (params.containsKey(option.getName())) {
+                    metrics = option.getTest().run(proxy, params.get(option.getName()));
+                }
+                for (String metric : metrics) {
                     output.append(prefix)
-                    .append(hostName)
-                    .append(".")
+                    .append(hostName).append(".")
                     .append(suffix)
-                    .append(serverName)
-                    .append(".")
-                    .append(s)
-                    .append(" ")
-                    .append(now)
-                    .append(System.getProperty("line.separator"));
+                    .append(serverName).append(".")
+                    .append(metric).append(" ")
+                    .append(now).append(System.getProperty("line.separator"));
                 }
             }
         } catch (Exception e) {
@@ -82,7 +79,6 @@ public class WASStatsManager {
         }
 
         return output.toString();
-
     }
 
 }
