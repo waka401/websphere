@@ -11,4 +11,11 @@ WAS Agent takes advantage of WebSphere Performance Monitoring infrastructure (PM
 The agent embedds a small Jetty container, and the monitoring itself is made through simple HTTP requests. This approach 
 allows short response times for monitoring queries, and a very low resource consumption.
 
+Installation
+------------
+
+
+
+
 [graphite]: http://graphite.wikidot.com
+[wasagent]: http://yannlambret.github.com/websphere/
