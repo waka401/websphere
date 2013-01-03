@@ -57,13 +57,14 @@ public class SIBQueueTest extends TestUtils implements Test {
     public List<String> run(WASClientProxy proxy, String params) {
         List<String> queues = Arrays.asList(params.split(","));
         List<String> output = new ArrayList<String>();
+        String identifier;
         String name;
         long depth;
 
         try {
             Set<ObjectName> mbeans = proxy.getMBeans("WebSphere:type=SIBQueuePoint,*");
             for (ObjectName mbean : mbeans) {
-                String identifier = (String)proxy.getAttribute(mbean, "identifier");
+                identifier = (String)proxy.getAttribute(mbean, "identifier");
                 if (skip(identifier))
                     continue;
                 if (queues.contains("*") || queues.contains(identifier)) {

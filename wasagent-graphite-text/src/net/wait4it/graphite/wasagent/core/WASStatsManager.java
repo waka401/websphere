@@ -64,14 +64,14 @@ public class WASStatsManager {
             for (Option option : Option.values()) {
                 if (params.containsKey(option.getName())) {
                     metrics = option.getTest().run(proxy, params.get(option.getName()));
-                }
-                for (String metric : metrics) {
-                    output.append(prefix)
-                    .append(hostName).append(".")
-                    .append(suffix)
-                    .append(serverName).append(".")
-                    .append(metric).append(" ")
-                    .append(now).append(System.getProperty("line.separator"));
+                    for (String metric : metrics) {
+                        output.append(prefix)
+                        .append(hostName).append(".")
+                        .append(suffix)
+                        .append(serverName).append(".")
+                        .append(metric).append(" ")
+                        .append(now).append(System.getProperty("line.separator"));
+                    }
                 }
             }
         } catch (Exception e) {
