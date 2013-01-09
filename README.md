@@ -27,7 +27,7 @@ Prerequisites
 
 ### General settings
 
-You just need to install an IBM JRE on each host you want to run the agent.
+You just need to install an IBM 1.6 JRE on each host you plan to run the agent.
 
 ### PMI settings
 
