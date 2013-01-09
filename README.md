@@ -18,7 +18,7 @@ Current features are:
 Concepts
 --------
 
-WAS Agent takes advantage of WebSphere Performance Monitoring infrastructure (PMI), as well as the regular JMX API.
+WAS Agent relies on the use of WebSphere Performance Monitoring infrastructure (PMI), as well as the regular JMX API.
 The agent embedds a small Jetty container, and the monitoring itself is made through simple HTTP requests. This approach 
 allows short response times for monitoring queries, and a very low resource consumption.
 
