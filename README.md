@@ -9,7 +9,7 @@ Current features are:
  * JVM heap monitoring
  * Server thread pools monitoring
  * Transactions monitoring
- * JDBC datasources monitorin
+ * JDBC datasources monitoring
  * JMS connection factories monitoring
  * SIB queues depth monitoring
  * HTTP sessions monitoring
@@ -24,6 +24,10 @@ allows short response times for monitoring queries, and a very low resource cons
 
 Prerequisites
 -------------
+
+### General settings
+
+You just need to install an IBM JRE on each host you want to run the agent.
 
 ### PMI settings
 
