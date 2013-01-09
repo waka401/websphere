@@ -75,8 +75,9 @@ public class JDBCTest extends TestUtils implements Test {
                 for (WSStats substat1 : substats1) {
                     WSStats[] substats2 = substat1.getSubStats(); // DataSource level
                     for (WSStats substat2 : substats2) {
-                        if (EXCLUSIONS.contains(substat2.getName()))
+                        if (EXCLUSIONS.contains(substat2.getName())) {
                             continue;
+                        }
                         if (datasources.contains("*") || datasources.contains(substat2.getName())) {
                             maximumPoolSize = getBoundedRangeStats(substat2, WSJDBCConnectionPoolStats.PoolSize).getUpperBound();
                             currentPoolSize = getBoundedRangeStats(substat2, WSJDBCConnectionPoolStats.PoolSize).getCurrent();

@@ -21,6 +21,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * This class manages the execution of the
+ * performance tests, and builds the required
+ * Graphite schemes using data supplied by the
+ * user.
+ * 
  * @author Yann Lambret
  *
  */
@@ -41,7 +46,7 @@ public class WASStatsManager {
      * the required tests based on the params contents.
      * 
      * @param  params HTTP request params
-     * @return output the Graphite metrics as plain old text.
+     * @return the Graphite metrics as plain old text
      */
     public String process(Map<String, String> params) {
         try {
@@ -53,11 +58,13 @@ public class WASStatsManager {
             String serverName = proxy.getServerName(); // WAS instance name
             String hostName = params.get("hostname");  // Target host name
 
-            if (params.get("prefix") != null)
+            if (params.get("prefix") != null) {
                 prefix = params.get("prefix") + ".";
+            }
 
-            if (params.get("suffix") != null)
+            if (params.get("suffix") != null) {
                 suffix = params.get("suffix") + ".";
+            }
 
             long now = System.currentTimeMillis() / 1000L;
 

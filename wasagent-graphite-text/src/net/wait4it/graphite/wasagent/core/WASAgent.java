@@ -25,8 +25,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 
 /**
  * Instantiates an embedded Jetty container and
- * registers a servlet to handle monitoring
- * requests.
+ * registers a servlet to handle monitoring requests.
  * 
  * @author Yann Lambret
  *

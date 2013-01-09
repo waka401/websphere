@@ -104,7 +104,7 @@ public class WASClientProxy {
      * Gets the whole PMI stats subtree for the given interface type.
      * 
      * @param  name the NAME field of a specific PMI interface
-     * @return a WSStats object for a specific PMI interface
+     * @return a WSStats object for the appropriate PMI interface
      * @throws Exception
      */
     public WSStats getStats(String name) throws Exception {
@@ -121,7 +121,7 @@ public class WASClientProxy {
     /**
      * Gets the target application server logical name.
      * 
-     * @return the instance name
+     * @return the WAS instance name
      * @throws Exception
      */
     public String getServerName() throws Exception {
@@ -132,7 +132,7 @@ public class WASClientProxy {
      * Gets a set of MBeans.
      * 
      * @param  query
-     * @return 
+     * @return all the MBeans matching a specific query
      * @throws Exception
      */
     @SuppressWarnings("unchecked")
@@ -144,7 +144,7 @@ public class WASClientProxy {
      * Gets a single MBean.
      * 
      * @param  query
-     * @return
+     * @return a unique MBean matching a specific query
      * @throws Exception
      */
     public ObjectName getMBean(String query) throws Exception {
@@ -157,7 +157,7 @@ public class WASClientProxy {
      * 
      * @param  mbean
      * @param  attribute
-     * @return
+     * @return the attribute value
      * @throws Exception
      */
     public Object getAttribute(ObjectName mbean, String attribute) throws Exception {

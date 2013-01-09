@@ -20,9 +20,9 @@ package net.wait4it.graphite.wasagent.core;
 import net.wait4it.graphite.wasagent.tests.*;
 
 /**
- * Details the available parameters when sending HTTP queries
- * to the plugin. If one of the enum values matches the query
- * parameter, the corresponding test is run.
+ * Details the available parameters when sending HTTP
+ * queries to the agent. If one of the values matches
+ * the query parameter, the corresponding test is run.
  * 
  * @author Yann Lambret
  *

@@ -77,8 +77,9 @@ public class ServletTest extends TestUtils implements Test {
                     for (WSStats substat2 : substats2) {
                         WSStats[] substats3 = substat2.getSubStats(); // Servlet level
                         for (WSStats substat3 : substats3) {
-                            if (EXCLUSIONS.contains(substat3.getName()))
+                            if (EXCLUSIONS.contains(substat3.getName())) {
                                 continue;
+                            }
                             if (servlets.contains("*") || servlets.contains(substat3.getName())) {
                                 serviceTime = getTimeStats(substat3, WSWebAppStats.ServletStats.ServiceTime).getMean();
                                 servletName = normalize(substat3.getName());

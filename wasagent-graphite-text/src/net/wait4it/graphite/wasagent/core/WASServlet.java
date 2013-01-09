@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Builds a HashMap with the HTTP query parameters,
- * call WASStatsManager process method and display
+ * calls WASStatsManager process method and display
  * the result as plain old text
  * 
  * @author Yann Lambret

@@ -28,9 +28,9 @@ import javax.management.ObjectName;
 import net.wait4it.graphite.wasagent.core.WASClientProxy;
 
 /**
- * Gets the depth of queues declared on
- * the WebSphere SIB provider. Also display
- * stats for the SIB error queue (*SYSTEM.Exception.Destination*)
+ * Gets the depth of queues declared on the
+ * WebSphere SIB provider. Also display stats
+ * for the SIB error queue (*SYSTEM.Exception.Destination*)
  * 
  * @author Yann Lambret
  *
@@ -65,8 +65,9 @@ public class SIBQueueTest extends TestUtils implements Test {
             Set<ObjectName> mbeans = proxy.getMBeans("WebSphere:type=SIBQueuePoint,*");
             for (ObjectName mbean : mbeans) {
                 identifier = (String)proxy.getAttribute(mbean, "identifier");
-                if (skip(identifier))
+                if (skip(identifier)) {
                     continue;
+                }
                 if (queues.contains("*") || queues.contains(identifier)) {
                     depth = (Long)proxy.getAttribute(mbean, "depth");
                     name = normalize(identifier);

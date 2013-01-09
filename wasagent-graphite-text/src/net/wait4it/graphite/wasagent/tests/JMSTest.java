@@ -15,7 +15,6 @@
  * along with Wasagent. If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-
 package net.wait4it.graphite.wasagent.tests;
 
 import java.util.ArrayList;
