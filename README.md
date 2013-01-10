@@ -333,5 +333,43 @@ This option doesn't take any value. It produces the following output:
 
     jta.activeCount
 
+### jdbc (optional)
+
+This option takes a comma separated list of datasource names, or a wildcard character (`jdbc=*`) for the whole
+datasource list. It produces the following output:
+
+    jdbc.<item>.activeCount
+    jdbc.<item>.currentPoolSize
+    jdbc.<item>.maximumPoolSize
+    jdbc.<item>.waitingThreadCount
+    
+### jms (optional)
+
+This option takes a comma separated list of JMS connection factory names, or a wildcard character (`jms=*`) for the whole
+connection factory list. It produces the following output:
+
+    jms.<item>.activeCount
+    jms.<item>.currentPoolSize
+    jms.<item>.maximumPoolSize
+    jms.<item>.waitingThreadCount
+
+### application (optional)
+
+This option takes a comma separated list of application names, or a wildcard character (`application=*`) for the whole
+application list. It produces the following output:
+
+    application.<item>.liveCount
+    
+"item" is of the form <logical application name>#<web module name>.
+
+### servlet (optional)
+
+This option takes a comma separated list of servlet names, or a wildcard character (`servlet=*`) for the whole
+servlet list. It produces the following output:
+
+    servlet.<item>.serviceTime
+
+"item" is of the form <logical application name>#<web module name>.<servlet name>
+
 [graphite]: http://graphite.wikidot.com
 [wasagent]: http://yannlambret.github.com/websphere/
