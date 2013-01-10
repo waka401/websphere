@@ -360,7 +360,7 @@ application list. It produces the following output:
 
     application.<item>.liveCount
     
-"item" is of the form <logical application name>#<web module name>.
+"item" is of the form `<logical application name>#<web module name>`.
 
 ### servlet (optional)
 
@@ -369,7 +369,7 @@ servlet list. It produces the following output:
 
     servlet.<item>.serviceTime
 
-"item" is of the form <logical application name>#<web module name>.<servlet name>
+"item" is of the form `<logical application name>#<web module name>.<servlet name>`.
 
 [graphite]: http://graphite.wikidot.com
 [wasagent]: http://yannlambret.github.com/websphere/
