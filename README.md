@@ -114,6 +114,100 @@ AdminConfig.save()
 print 'ok.'
 ```
 
+If you want to make runtime tests, you can use the following snippets:
+
+```python
+# wasagent PMI settings script
+# Use only with WAS 8.x and 7.x versions
+
+# Change these values
+node_name = 'hydre2'
+server_name = 'h2srv1'
+
+# Script starts here
+perf_name = AdminControl.completeObjectName('type=Perf,node=%s,process=%s,*' % (node_name, server_name))
+signature  = ['java.lang.String', 'java.lang.Boolean']
+
+# JVM settings
+params = ['jvmRuntimeModule=1,3,5', java.lang.Boolean('true')]
+AdminControl.invoke(perf_name, 'setCustomSetString', params, signature)
+
+# Thread pools settings
+params = ['threadPoolModule=3,4', java.lang.Boolean('true')]
+AdminControl.invoke(perf_name, 'setCustomSetString', params, signature)
+
+# Transactions settings
+params = ['transactionModule=4', java.lang.Boolean('true')]
+AdminControl.invoke(perf_name, 'setCustomSetString', params, signature)
+
+# JDBC connection pools setting
+params = ['connectionPoolModule=5,6,7', java.lang.Boolean('true')]
+AdminControl.invoke(perf_name, 'setCustomSetString', params, signature)
+
+# JMS connection factories settings
+params = ['j2cModule=5,6,7', java.lang.Boolean('true')]
+AdminControl.invoke(perf_name, 'setCustomSetString', params, signature)
+
+# HTTP sessions settings
+params = ['servletSessionsModule=7', java.lang.Boolean('true')]
+AdminControl.invoke(perf_name, 'setCustomSetString', params, signature)
+
+# Servlets settings
+params = ['webAppModule=13', java.lang.Boolean('true')]
+AdminControl.invoke(perf_name, 'setCustomSetString', params, signature)
+
+# Uncomment to persist changes
+#
+#AdminControl.invoke(perf_name, 'savePMIConfiguration')
+```
+
+```python
+# wasagent PMI settings script
+# Use only with WAS 6.1 version
+
+# Change these values
+node_name = 'hydre2'
+server_name = 'h2srv1'
+
+# Script starts here
+perf_name = AdminControl.completeObjectName('type=Perf,node=%s,process=%s,*' % (node_name, server_name))
+perf_mbean = AdminControl.makeObjectName(perf_name)
+
+signature  = ['java.lang.String', 'java.lang.Boolean']
+
+# JVM settings
+params = ['jvmRuntimeModule=1,3,5', java.lang.Boolean('true')]
+AdminControl.invoke_jmx(perf_mbean, 'setCustomSetString', params, signature)
+
+# Thread pools settings
+params = ['threadPoolModule=3,4', java.lang.Boolean('true')]
+AdminControl.invoke_jmx(perf_mbean, 'setCustomSetString', params, signature)
+
+# Transactions settings
+params = ['transactionModule=4', java.lang.Boolean('true')]
+AdminControl.invoke_jmx(perf_mbean, 'setCustomSetString', params, signature)
+
+# JDBC connection pools setting
+params = ['connectionPoolModule=5,6,7', java.lang.Boolean('true')]
+AdminControl.invoke_jmx(perf_mbean, 'setCustomSetString', params, signature)
+
+# JMS connection factories settings
+params = ['j2cModule=5,6,7', java.lang.Boolean('true')]
+AdminControl.invoke_jmx(perf_mbean, 'setCustomSetString', params, signature)
+
+# HTTP sessions settings
+params = ['servletSessionsModule=7', java.lang.Boolean('true')]
+AdminControl.invoke_jmx(perf_mbean, 'setCustomSetString', params, signature)
+
+# Servlets settings
+params = ['webAppModule=13', java.lang.Boolean('true')]
+AdminControl.invoke_jmx(perf_mbean, 'setCustomSetString', params, signature)
+
+# Uncomment to persist changes
+#
+#AdminControl.invoke(perf_name, 'savePMIConfiguration')
+```
+
 Installing WAS Agent
 --------------------
 
