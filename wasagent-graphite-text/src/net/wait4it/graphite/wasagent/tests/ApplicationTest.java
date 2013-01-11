@@ -62,7 +62,7 @@ public class ApplicationTest extends TestUtils implements Test {
             if (stats != null) {
                 WSStats[] substats = stats.getSubStats();
                 for (WSStats substat : substats) {
-                    if (EXCLUSIONS.contains(stats.getName())) {
+                    if (EXCLUSIONS.contains(substat.getName())) {
                         continue;
                     }
                     if (applications.contains("*") || applications.contains(substat.getName())) {
