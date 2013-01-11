@@ -4,6 +4,20 @@ WAS Agent
 A network tool for WebSphere Application Server monitoring, that provides performance statistics in a suitable format for
 [Graphite][graphite].
 
+* [Features](#features)
+* [Concepts](#concepts)
+* [Prerequisites](#prerequisites)
+    * [General settings](#general-settings)
+    * [PMI settings](#pmi-settings)
+* [Installing WAS Agent](#installing-was-agent)
+* [Using WAS Agent](#using-was-agent)
+    * [Starting the agent](#starting-the-agent)
+    * [Running queries](#running-queries)
+    * [Options](#options)
+
+Features
+--------
+
 Current features are:
 
  * JVM heap monitoring
@@ -214,6 +228,10 @@ Installing WAS Agent
 Using WAS Agent
 ---------------
 
+### Sarting the agent
+
+### Running queries
+
 We assume that the agent is running and listening on 'hydre1:9090', and we want to monitor a remote WAS instance
 listening on its default SOAP connector (8880).
 
@@ -259,27 +277,29 @@ Which will give you this result:
 If metric names contain characters that can not be used in a metric scheme (like "." and "/"), they will be replaced by
 an underscore.
 
+### Options
+
 Here is a summary of the available options:
 
-### hostname (mandatory)
+#### hostname (mandatory)
 
 The hostname of the WAS instance you want to monitor.
 
-### port (mandatory)
+#### port (mandatory)
 
 The SOAP connector of the WAS instance you want to monitor.
 
-### prefix (optional)
+#### prefix (optional)
 
 The prefix string will be placed at the beginning of the metric scheme. Don't use a trailing period (i.e. 'emea.fr' is
 correct, 'emea.fr.' is not).
 
-### suffix (optional)
+#### suffix (optional)
 
 The suffix string will placed right after the hostname in the metric scheme. Don't use a leading period (i.e. 'was' is
 correct, '.was' is not).
 
-### jvm (optional)
+#### jvm (optional)
 
 This option doesn't take any value. It produces the following output:
 
@@ -288,7 +308,7 @@ This option doesn't take any value. It produces the following output:
     jvm.currentHeapUsed
     jvm.maximumHeapSize
 
-### thread-pool (optional)
+#### thread-pool (optional)
 
 This option takes a comma separated list of thread pool names, or a wildcard character (`thread-pool=*`) for the whole
 thread pool list. The following output is produced when the wildcard character is passed:
@@ -327,13 +347,13 @@ thread pool list. The following output is produced when the wildcard character i
     threadPool.WebContainer.currentPoolSize
     threadPool.WebContainer.maximumPoolSize
 
-### jta (optional)
+#### jta (optional)
 
 This option doesn't take any value. It produces the following output:
 
     jta.activeCount
 
-### jdbc (optional)
+#### jdbc (optional)
 
 This option takes a comma separated list of datasource names, or a wildcard character (`jdbc=*`) for the whole
 datasource list. It produces the following output:
@@ -343,7 +363,7 @@ datasource list. It produces the following output:
     jdbc.<item>.maximumPoolSize
     jdbc.<item>.waitingThreadCount
     
-### jms (optional)
+#### jms (optional)
 
 This option takes a comma separated list of JMS connection factory names, or a wildcard character (`jms=*`) for the whole
 connection factory list. It produces the following output:
@@ -353,7 +373,7 @@ connection factory list. It produces the following output:
     jms.<item>.maximumPoolSize
     jms.<item>.waitingThreadCount
 
-### application (optional)
+#### application (optional)
 
 This option takes a comma separated list of application names, or a wildcard character (`application=*`) for the whole
 application list. It produces the following output:
@@ -362,7 +382,7 @@ application list. It produces the following output:
     
 "item" is of the form `<logical application name>#<web module name>`.
 
-### servlet (optional)
+#### servlet (optional)
 
 This option takes a comma separated list of servlet names, or a wildcard character (`servlet=*`) for the whole
 servlet list. It produces the following output:
