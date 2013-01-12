@@ -10,6 +10,9 @@ A network tool for WebSphere Application Server monitoring, that provides perfor
     * [General settings](#general-settings)
     * [PMI settings](#pmi-settings)
 * [Installing WAS Agent](#installing-was-agent)
+    * [Build](#build)
+    * [Installation](#installation)
+    * [Configuration](#configuration)
 * [Using WAS Agent](#using-was-agent)
     * [Starting the agent](#starting-the-agent)
     * [Running queries](#running-queries)
@@ -225,25 +228,11 @@ AdminControl.invoke_jmx(perf_mbean, 'setCustomSetString', params, signature)
 Installing WAS Agent
 --------------------
 
-Using WAS Agent
----------------
+### Build
 
-### Sarting the agent
-
-Assuming you are using a root directory named 'wasagent', you need the following layout:
-
-```
-wasagent
-|-- lib
-|   |-- com.ibm.ws.admin.client_7.0.0.jar
-|   |-- jetty-servlet-7.6.2.v20120308.jar
-|   `-- servlet-api-2.5.jar
-|-- run.sh
-|-- wasagent.jar
-`-- websphere.properties
-```
-
-You can get the WebSphere admin client in the following runtimes directory of your product installation:
+Download a zip archive of the master branch by using the link on this page. The two directories we are interested in are
+'src' and 'lib'. First things first, copy the WebSphere admin client jar in the lib directory. You can find the required
+file in the 'runtimes' directory of your product installation.
 
 WAS 8.0:
 
@@ -256,6 +245,29 @@ WAS 7.0:
 WAS 6.1:
 
 `${WAS_INSTALL_ROOT}/runtimes/com.ibm.ws.admin.client_6.1.0.jar`
+
+You can use Apache Ant and the provided 'build.xml' file to build the plugin.
+
+### Installation
+
+For WAS 7.0 and WAS 8.x, you need one instance of the agent per cell, which you will typically deploy on the dmgr host.
+For WAS 6.1, you need one instance of the agent per node.
+
+Assuming you are using a root directory named 'wasagent', its layout will be as following:
+
+```
+wasagent
+|-- lib
+|   |-- com.ibm.ws.admin.client_X.X.X.jar
+|   |-- jetty-servlet-7.6.2.v20120308.jar
+|   `-- servlet-api-2.5.jar
+|-- run.sh
+|-- wasagent.jar
+`-- websphere.properties
+```
+Just copy appropriate files and directories from your build directory into the 'wasagent' directory.
+
+### Configuration
 
 The 'websphere.properties' file contains the basic informations used to connect to a WebSphere Application Server.
 You have to set the contents of this file according to your environment.
@@ -271,10 +283,10 @@ You have to set the contents of this file according to your environment.
 username=
 password=
 
-# Theses keystores are used to establish a secured connection beetween
+# These keystores are used to establish a secured connection beetween
 # the agent and the target WAS instance. "${USER_INSTALL_ROOT}" should
 # be replaced by the dmgr profile path of the cell for WAS 7.0 and 8.x,
-# or by the nodeagent profile path of each node for WAS 6.1.
+# or by the nodeagent profile path of the node for WAS 6.1.
 #
 # PKCS12 keystores sample config
 #
@@ -285,13 +297,20 @@ javax.net.ssl.keyStore=${USER_INSTALL_ROOT}/etc/key.p12
 javax.net.ssl.keyStorePassword=WebAS
 javax.net.ssl.keyStoreType=PKCS12
 #
-# JKS keystores sample config (default keystore type is JSK)
+# JKS keystores sample config (default keystore type is JKS)
 #
 #javax.net.ssl.trustStore=${USER_INSTALL_ROOT}/etc/DummyClientTrustFile.jks
 #javax.net.ssl.trustStorePassword=WebAS
 #javax.net.ssl.keyStore=${USER_INSTALL_ROOT}/etc/DummyClientKeyFile.jks
 #javax.net.ssl.keyStorePassword=WebAS
 ```
+
+Using WAS Agent
+---------------
+
+### Sarting the agent
+
+
 
 ### Running queries
 
