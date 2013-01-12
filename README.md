@@ -232,6 +232,7 @@ Using WAS Agent
 
 Assuming you are using a root directory named 'wasagent', you need the following layout:
 
+```
 wasagent
 |-- lib
 |   |-- com.ibm.ws.admin.client_7.0.0.jar
@@ -240,6 +241,7 @@ wasagent
 |-- run.sh
 |-- wasagent.jar
 `-- websphere.properties
+```
 
 You can get the WebSphere admin client in the following runtimes directory of your product installation:
 
@@ -258,7 +260,7 @@ WAS 6.1:
 The 'websphere.properties' file contains the basic informations used to connect to a WebSphere Application Server.
 You have to set the contents of this file according to your environment.
 
-```
+```bash
 # WAS Agent properties file
 #
 # These credentials are used to connect to each
@@ -283,7 +285,7 @@ javax.net.ssl.keyStore=${USER_INSTALL_ROOT}/etc/key.p12
 javax.net.ssl.keyStorePassword=WebAS
 javax.net.ssl.keyStoreType=PKCS12
 #
-# JKS keystores sample config (default 'keyStoreTYpe' is JSK)
+# JKS keystores sample config (default keystore type is JSK)
 #
 #javax.net.ssl.trustStore=${USER_INSTALL_ROOT}/etc/DummyClientTrustFile.jks
 #javax.net.ssl.trustStorePassword=WebAS
