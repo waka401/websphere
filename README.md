@@ -230,6 +230,67 @@ Using WAS Agent
 
 ### Sarting the agent
 
+Assuming you are using a root directory named 'wasagent', you need the following layout:
+
+wasagent
+|-- lib
+|   |-- com.ibm.ws.admin.client_7.0.0.jar
+|   |-- jetty-servlet-7.6.2.v20120308.jar
+|   `-- servlet-api-2.5.jar
+|-- run.sh
+|-- wasagent.jar
+`-- websphere.properties
+
+You can get the WebSphere admin client in the following runtimes directory of your product installation:
+
+WAS 8.0:
+
+`${WAS_INSTALL_ROOT}/runtimes/com.ibm.ws.admin.client_8.0.0.jar`
+
+WAS 7.0:
+
+`${WAS_INSTALL_ROOT}/runtimes/com.ibm.ws.admin.client_7.0.0.jar`
+
+WAS 6.1:
+
+`${WAS_INSTALL_ROOT}/runtimes/com.ibm.ws.admin.client_6.1.0.jar`
+
+The 'websphere.properties' file contains the basic informations used to connect to a WebSphere Application Server.
+You have to set the contents of this file according to your environment.
+
+```
+# WAS Agent properties file
+#
+# These credentials are used to connect to each
+# target WAS instance of the cell. The user has
+# to be mapped to the 'monitor' role, no need to
+# use an administrative account.
+#
+username=
+password=
+
+# Theses keystores are used to establish a secured connection beetween
+# the agent and the target WAS instance. "${USER_INSTALL_ROOT}" should
+# be replaced by the dmgr profile path of the cell for WAS 7.0 and 8.x,
+# or by the nodeagent profile path of each node for WAS 6.1.
+#
+# PKCS12 keystores sample config
+#
+javax.net.ssl.trustStore=${USER_INSTALL_ROOT}/etc/trust.p12
+javax.net.ssl.trustStorePassword=WebAS
+javax.net.ssl.trustStoreType=PKCS12
+javax.net.ssl.keyStore=${USER_INSTALL_ROOT}/etc/key.p12
+javax.net.ssl.keyStorePassword=WebAS
+javax.net.ssl.keyStoreType=PKCS12
+#
+# JKS keystores sample config (default 'keyStoreTYpe' is JSK)
+#
+#javax.net.ssl.trustStore=${USER_INSTALL_ROOT}/etc/DummyClientTrustFile.jks
+#javax.net.ssl.trustStorePassword=WebAS
+#javax.net.ssl.keyStore=${USER_INSTALL_ROOT}/etc/DummyClientKeyFile.jks
+#javax.net.ssl.keyStorePassword=WebAS
+```
+
 ### Running queries
 
 We assume that the agent is running and listening on 'hydre1:9090', and we want to monitor a remote WAS instance
