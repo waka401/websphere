@@ -253,7 +253,7 @@ You can use Apache Ant and the provided 'build.xml' file to build the plugin.
 For WAS 7.0 and WAS 8.x, you need one instance of the agent per cell, which you will typically deploy on the dmgr host.
 For WAS 6.1, you need one instance of the agent per node.
 
-Assuming you are using a root directory named 'wasagent', its layout will be as following:
+Assuming you are using a root directory named 'wasagent', the layout will be as following:
 
 ```
 wasagent
@@ -310,7 +310,13 @@ Using WAS Agent
 
 ### Sarting the agent
 
+Amend the 'run.sh' script to set the path of your JRE installation, and type:
 
+```
+./run.sh
+```
+
+This script is provided for testing purpose only, so you will have to write your own init script.
 
 ### Running queries
 
