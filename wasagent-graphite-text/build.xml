@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="wasagent" basedir="." default="build">
+
+    <property name="src.dir"     value="src" />
+    <property name="lib.dir"     value="lib" />
+    <property name="build.dir"   value="build" />
+    <property name="classes.dir" value="${build.dir}/classes" />
+    <property name="jar.dir"     value="${build.dir}/jar" />
+    <property name="javadoc.dir" value="${build.dir}/javadoc" />
+    <property name="main-class"  value="net.wait4it.graphite.wasagent.core.WASAgent" />
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar" />
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}" />
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" includeantruntime="false" />
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}" />
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="javadoc">
+        <javadoc packagenames="src" sourcepath="${src.dir}" destdir="${javadoc.dir}" classpathref="classpath">
+            <fileset dir="${src.dir}">
+                <include name="**" />
+            </fileset>
+        </javadoc>
+    </target>
+
+    <target name="build" depends="clean,jar" />
+
+</project>
