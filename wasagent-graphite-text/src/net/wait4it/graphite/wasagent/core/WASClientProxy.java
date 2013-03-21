@@ -15,6 +15,7 @@
  * along with Wasagent. If not, see <http://www.gnu.org/licenses/>.
  * 
  */
+
 package net.wait4it.graphite.wasagent.core;
 
 import java.io.FileInputStream;
@@ -45,9 +46,10 @@ import com.ibm.websphere.pmi.stat.WSStats;
 public class WASClientProxy {
 
     private static FileInputStream stream = null;
-    private static Properties props = new Properties();
+    private static Properties defaults = new Properties();
 
     private Map<String,String> params; // HTTP request params
+    private Properties props;          // Connection properties
     private AdminClient client;        // WebSphere JMX client
     private ObjectName serverMBean;    // WebSphere server MBean
     private ObjectName perfMBean;      // WebSphere Perf MBean
@@ -56,7 +58,7 @@ public class WASClientProxy {
     static {
         try {
             stream = new FileInputStream("websphere.properties");
-            props.load(stream);
+            defaults.load(stream);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -84,6 +86,9 @@ public class WASClientProxy {
      * @throws Exception
      */
     public void init() throws Exception {
+        // Properties initialization
+        props = (Properties)defaults.clone();
+
         // We use a SOAP connector with a 10 seconds timeout
         props.setProperty(AdminClient.CONNECTOR_TYPE, AdminClient.CONNECTOR_TYPE_SOAP);
         props.setProperty(AdminClient.CONNECTOR_SOAP_REQUEST_TIMEOUT, "10");
